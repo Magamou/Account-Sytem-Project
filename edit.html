@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="test.js"></script>
+    <title>edite</title>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h3>Account System</h3>
+
+        </header>
+        <div id="menu_context">
+            <button>
+                <img src="./Icon/icons8-menu-50.png">
+            </button>
+            <a href="index.html">
+                <img src="https://img.icons8.com/windows/50/000000/home.png"/>
+                <h1>Home</h1>
+            </a>
+            <a href="menage.html">
+                <img src="https://img.icons8.com/external-others-phat-plus/50/000000/external-accounting-design-thinking-outline-others-phat-plus.png"/>
+                <h1>Menage Account</h1>
+            </a>
+
+            <a href="edit.html">
+                <img src="https://img.icons8.com/ios-glyphs/50/000000/edit-property.png"/>
+                <h1>Edit Account</h1>
+            </a>
+
+            <a href="transaction.html">
+                <img src="https://img.icons8.com/windows/50/000000/transaction-list.png"/>
+                <h1>Account Transaction</h1>
+            </a>
+            <div id="udt">
+                <h1>update delete tab</h1>
+            </div>
+
+        </div>
+        <main>
+              <div id="main_title_menage">
+                <h1>Edit Account</h1>
+              </div>
+              <div id="manage_area">
+                  <div id="edit_form">
+                      <label>First Date</label><input type="date" placeholder="First date">
+                      <label>Last Date</label><input type="date" placeholder="Last Date">
+                      <label>Account</label>
+                      <select>
+                          <option value="classe1">classe1</option>
+                          <option value="classe2">classe2</option>
+                          <option value="classe3">classe3</option>
+                          <option value="classe4">classe4</option>
+                          <option value="classe5">classe5</option>
+                          <option value="classe6">classe6</option>
+                          <option value="classe7">classe7</option>
+                          <option value="classe8">classe8</option>
+                      </select>
+                      <button>Add</button>
+                  </div>
+              </div>
+              <div id="table_area">
+                  <table cellspacing="0">
+                      <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th colspan="2">Label</th>
+                            <th>Classe</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          
+                      </tbody>
+                  </table>
+                </div>
+        </main>
+    </div>
+</body>
+</html>
