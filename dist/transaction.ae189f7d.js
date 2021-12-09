@@ -459,32 +459,99 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"1wubG":[function(require,module,exports) {
-// let row =document.querySelector('tr');
-// row.addEventListener('dbclick', function(e){
-//     row.style.backgroundColor="yellow";
-//     row.style.minWidth
-// })
-let menu = document.querySelector('#menu_context');
-let button = menu.querySelector('button');
-let tite = menu.querySelectorAll('h1');
-let main = document.querySelector('main');
-button.addEventListener('click', function(e) {
-    for (h of tite)h.style.display = "none";
-    menu.style.width = "5%";
-    main.style.width = "95%";
-}); // export const Selector={
- //   menu:document.querySelector('#menu_context'),
- //   state:0,
- //   store:function(){
- //     localStorage.setItem('state',`${this.state}`);
- //   },
- //   restore:function(name){
- //     console.log(localStorage.getItem(`${name}`));
- //   }
- // }
- // Selector.menu.style.backgroundColor="green";
- // Selector.store();
- // Selector.restore('state');
+var _selectItem = require("./lib/Selector/selectItem");
+
+},{"./lib/Selector/selectItem":"hwqLn"}],"hwqLn":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "menu", ()=>menu
+);
+parcelHelpers.export(exports, "getHeader", ()=>getHeader
+);
+parcelHelpers.export(exports, "getMain", ()=>getMain
+);
+//Menu Items
+var menuContext = document.querySelector('#menu_context');
+var h1 = menuContext.querySelectorAll('h1');
+var a = menuContext.querySelectorAll('a');
+var button = menuContext.querySelector('button');
+//Header Items
+var header = document.querySelector('header');
+//////Main Items
+var main = document.querySelector('main');
+//menage title
+var manageTitle = document.querySelector('#main_title_menage');
+//menage_form
+var manageForm = document.querySelector('#menage_form');
+//menage form inputs
+var manageFormCode = manageForm.querySelectorAll('input')[0];
+var manageFormLabel = manageForm.querySelectorAll('input')[1];
+var manageFormSelect = manageForm.querySelector('select');
+var manageFormButton = manageForm.querySelector('button');
+//menage form table
+var tableArea = document.querySelector('#table_area');
+var manageTable = tableArea.querySelector('table');
+var manageThead = tableArea.querySelector('thead');
+var manageTbody = tableArea.querySelector('tbody');
+var manageTfoot = tableArea.querySelector('tfoot');
+const menu = ()=>{
+    return {
+        menuContext,
+        h1,
+        a,
+        button
+    };
+};
+const getHeader = ()=>{
+    return {
+        header
+    };
+};
+const getMain = ()=>{
+    return {
+        main,
+        manageTitle,
+        manageFormCode,
+        manageFormLabel,
+        manageFormSelect,
+        manageFormButton,
+        tableArea,
+        manageTable,
+        manageThead,
+        manageTbody,
+        manageTfoot
+    };
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"ciiiV":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
 
 },{}]},["enqa6","1wubG"], "1wubG", "parcelRequire3fe4")
 
