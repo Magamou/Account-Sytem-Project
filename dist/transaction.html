@@ -45,31 +45,32 @@
             <div id="main_title_menage">
                 <h1>Account Transaction</h1>
               </div>
-              <div id="manage_area">
-                  <div id="edit_form">
-                      <label>First Date</label><input type="date" placeholder="First date">
-                      <label>Last Date</label><input type="date" placeholder="Last Date">
-                      <label>Account</label>
-                      <select>
-                          <option value="classe1">classe1</option>
-                          <option value="classe2">classe2</option>
-                          <option value="classe3">classe3</option>
-                          <option value="classe4">classe4</option>
-                          <option value="classe5">classe5</option>
-                          <option value="classe6">classe6</option>
-                          <option value="classe7">classe7</option>
-                          <option value="classe8">classe8</option>
-                      </select>
-                      <button>Add</button>
+              <div id="transaction_area">
+                  <div id="transaction_form">
+                      <label>Transaction Date</label><input type="date" placeholder="First date">
+                      <label>Transaction Description</label><input type="text" placeholder="description of transaction">
+                      <button>Add</button><br>
+
+                      <label>Code</label><input type="text" placeholder="Label">
+                      <label>Debit</label><input type="number" placeholder="Debit">
+                      <label>Credit</label><input type="number" placeholder="Credit"><br>
+
+                      <label>Code</label><input type="text" placeholder="Label">
+                      <label>Debit</label><input type="number" placeholder="Debit">
+                      <label>Credit</label><input type="number" placeholder="Credit">
+                      
                   </div>
               </div>
-              <div id="table_area">
+              <div id="table_area_transaction">
                   <table cellspacing="0">
                       <thead>
                         <tr>
-                            <th>Code</th>
-                            <th colspan="2">Label</th>
-                            <th>Classe</th>
+                            <th>Transaction Date</th>
+                            <th>Account Code(debit)</th>
+                            <th>Account Code(credit)</th>
+                            <th>Transaction Object</th>
+                            <th>Debit</th>
+                            <th>Credit</th>
                         </tr>
                       </thead>
                       <tbody>
