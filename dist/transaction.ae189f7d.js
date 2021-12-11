@@ -460,6 +460,7 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"1wubG":[function(require,module,exports) {
 var _selectItem = require("./lib/Selector/selectItem");
+_selectItem.menu().button.style.backgroundColor = "yellow";
 
 },{"./lib/Selector/selectItem":"hwqLn"}],"hwqLn":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
