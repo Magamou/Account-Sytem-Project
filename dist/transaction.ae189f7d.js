@@ -460,6 +460,7 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"1wubG":[function(require,module,exports) {
 var _selectItem = require("./lib/Selector/selectItem");
+console.log(_selectItem.menu().h1.length);
 
 },{"./lib/Selector/selectItem":"hwqLn"}],"hwqLn":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -472,8 +473,8 @@ parcelHelpers.export(exports, "getMain", ()=>getMain
 );
 //Menu Items
 var menuContext = document.querySelector('#menu_context');
-var h1 = menuContext.querySelectorAll('h1');
-var a = menuContext.querySelectorAll('a');
+var h1 = Array.from(menuContext.querySelectorAll('h1'));
+var a = Array.from(menuContext.querySelectorAll('a'));
 var button = menuContext.querySelector('button');
 //Header Items
 var header = document.querySelector('header');
