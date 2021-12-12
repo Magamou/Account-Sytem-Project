@@ -15,26 +15,27 @@
         </header>
         <div id="menu_context">
             <button>
-                <img src="./Icon/icons8-menu-50.png">
+                <img src="./Icon/icons8-menu-50.png" alt="menu image">
             </button>
             <a href="index.html">
-                <img src="https://img.icons8.com/windows/50/000000/home.png"/>
+                <img src="./Icon/icons8-accueil-50.png" alt="index image">
                 <h1>Home</h1>
             </a>
             <a href="menage.html">
-                <img src="https://img.icons8.com/external-others-phat-plus/50/000000/external-accounting-design-thinking-outline-others-phat-plus.png"/>
+                <img src="./Icon/icons8-accounting-50.png" alt="menage image">
                 <h1>Menage Account</h1>
             </a>
 
             <a href="edit.html">
-                <img src="https://img.icons8.com/ios-glyphs/50/000000/edit-property.png"/>
+                <img src="./Icon/icons8-modifier-la-propriété-50.png" alt="edit image">
                 <h1>Edit Account</h1>
             </a>
 
             <a href="transaction.html">
-                <img src="https://img.icons8.com/windows/50/000000/transaction-list.png"/>
+                <img src="./Icon/icons8-liste-des-transactions-50.png" alt="transaction image">
                 <h1>Account Transaction</h1>
             </a>
+
             <div id="udt">
                 <h1>update delete tab</h1>
             </div>
@@ -44,10 +45,10 @@
               <h1>Manage Account</h1>
             </div>
                 <div id="menage_form">
-                    <label>Code</label><input type="text" placeholder="Code">
-                    <label>Label</label><input type="text" placeholder="Label">
+                    <label>Code</label><input type="text" placeholder="Code" id="mCode">
+                    <label>Label</label><input type="text" placeholder="Label" id="mLabel">
                     <label>Classe</label>
-                    <select>
+                    <select name="class account" id="mClasse">
                         <option value="classe1">classe1</option>
                         <option value="classe2">classe2</option>
                         <option value="classe3">classe3</option>
@@ -57,7 +58,7 @@
                         <option value="classe7">classe7</option>
                         <option value="classe8">classe8</option>
                     </select>
-                    <button>Add</button>
+                    <button id="bm">Add</button>
                 </div>
             <div id="table_area">
                 <table cellspacing="0">

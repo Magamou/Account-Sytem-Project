@@ -140,12 +140,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"enqa6":[function(require,module,exports) {
+})({"aX5A0":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "4a236f9275d0a351";
-module.bundle.HMR_BUNDLE_ID = "701a3e58ae189f7d";
+module.bundle.HMR_BUNDLE_ID = "24d688e73f9011b7";
 "use strict";
 function _createForOfIteratorHelper(o, allowArrayLike) {
     var it;
@@ -458,43 +458,77 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"1wubG":[function(require,module,exports) {
+},{}],"ThpGU":[function(require,module,exports) {
 var _render = require("./lib/Render/render");
-let Code = document.querySelector("#mCode");
-let Label = document.querySelector("#mLabel");
-let Classe = document.querySelector("#mClasse");
-let bm = document.querySelector("#bm");
-let list = document.querySelector("#table_area").querySelector("tbody");
-let accountList;
-let data = localStorage.getItem("ROWS");
+var _input = require("./lib/Control/input");
+let transactionDate = document.querySelector("#date");
+let transactionDesc = document.querySelector("#desc");
+let codeDebit = document.querySelector("#accountDebit");
+let mtDebit = document.querySelector("#debit");
+let codeCredit = document.querySelector("#accountCredit");
+let mtCredit = document.querySelector("#credit");
+let button = document.querySelector("#bt");
+let list = document.querySelector("#table_area_transaction").querySelector("tbody");
+let transList;
+let data = localStorage.getItem("TRANS");
+let tc = 0;
+let td = 0;
 if (data) {
-    accountList = JSON.parse(data);
-    _render.loadAccount(list, accountList);
-    _render.alternate(list);
-} else accountList = [];
-bm.addEventListener("click", function(event) {
-    const _code = Code.value;
-    const _label = Label.value;
-    const _classe = Classe.value;
-    if (_code && _label && _classe) {
-        _render.addAccount(list, {
-            code: _code,
-            label: _label,
-            classe: _classe
+    transList = JSON.parse(data);
+    _render.loadTrans(list, transList);
+    _input.total();
+} else transList = [];
+button.addEventListener("click", function(event) {
+    if (_input.searchAccount(codeDebit.value) && _input.searchAccount(codeCredit.value)) {
+        //////////////////////////
+        tc = Number(mtCredit.value);
+        td = Number(mtDebit.value);
+        _input.storeTotal(tc, td);
+        _input.total();
+        _render.addTrans(list, {
+            _transactionDate: transactionDate.value,
+            _codeDebit: codeDebit.value,
+            _codeCredit: "",
+            _transactionDesc: transactionDesc.value,
+            _mtDebit: mtDebit.value,
+            _mtCredit: 0
         });
-        accountList.push({
-            code: _code,
-            label: _label,
-            classe: _classe
+        _render.addTrans(list, {
+            _transactionDate: transactionDate.value,
+            _codeDebit: "",
+            _codeCredit: codeCredit.value,
+            _transactionDesc: transactionDesc.value,
+            _mtDebit: 0,
+            _mtCredit: mtCredit.value
         });
-        localStorage.setItem("ROWS", JSON.stringify(accountList));
-    } else console.log("error");
-    Code.value = "";
-    Label.value = "";
-    Classe.value = "";
+        transList.push({
+            _transactionDate: transactionDate.value,
+            _codeDebit: codeDebit.value,
+            _codeCredit: "",
+            _transactionDesc: transactionDesc.value,
+            _mtDebit: mtDebit.value,
+            _mtCredit: 0
+        });
+        transList.push({
+            _transactionDate: transactionDate.value,
+            _codeDebit: "",
+            _codeCredit: codeCredit.value,
+            _transactionDesc: transactionDesc.value,
+            _mtDebit: 0,
+            _mtCredit: mtCredit.value
+        });
+        localStorage.setItem("TRANS", JSON.stringify(transList));
+        transactionDate.value = "";
+        transactionDesc.value = "";
+        codeCredit.value = "";
+        codeDebit.value = "";
+        mtCredit.value = "";
+        mtDebit.value = "";
+    //////////////////////////
+    } else console.log("Error");
 });
 
-},{"./lib/Render/render":"ieEPX"}],"ieEPX":[function(require,module,exports) {
+},{"./lib/Render/render":"ieEPX","./lib/Control/input":"lFXyL"}],"ieEPX":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "addAccount", ()=>addAccount
@@ -611,6 +645,6 @@ function searchAccount(account) {
     return corresponding;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["enqa6","1wubG"], "1wubG", "parcelRequire3fe4")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["aX5A0","ThpGU"], "ThpGU", "parcelRequire3fe4")
 
-//# sourceMappingURL=menage.ae189f7d.js.map
+//# sourceMappingURL=transaction.3f9011b7.js.map

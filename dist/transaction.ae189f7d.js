@@ -459,70 +459,91 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"1wubG":[function(require,module,exports) {
+<<<<<<< HEAD
 var _selectItem = require("./lib/Selector/selectItem");
 _selectItem.menu().button.style.backgroundColor = "yellow";
+=======
+var _render = require("./lib/Render/render");
+let Code = document.querySelector("#mCode");
+let Label = document.querySelector("#mLabel");
+let Classe = document.querySelector("#mClasse");
+let bm = document.querySelector("#bm");
+let list = document.querySelector("#table_area").querySelector("tbody");
+var page = window.location.pathname.split('/').pop();
+let accountList;
+let data = localStorage.getItem("ROWS");
+if (data) {
+    accountList = JSON.parse(data);
+    _render.loadAccount(list, accountList);
+    _render.alternate(list);
+} else accountList = [];
+// function loadAccount(array){
+//     array.forEach(item => {
+//         addAccount(list, item);
+//     });
+// }
+// function addAccount(_code, _label, _classe){
+//     const text=
+//     `<tr>
+//         <td>${_code}</td>
+//         <td colspan="2">${_label}</td>
+//         <td>${_classe}</td>
+//     </tr>
+//     `
+//     const position="beforeend";
+//     list.insertAdjacentHTML(position, text);
+// }
+bm.addEventListener("click", function(event) {
+    const _code = Code.value;
+    const _label = Label.value;
+    const _classe = Classe.value;
+    if (_code && _label && _classe) {
+        _render.addAccount(list, {
+            code: _code,
+            label: _label,
+            classe: _classe
+        });
+        accountList.push({
+            code: _code,
+            label: _label,
+            classe: _classe
+        });
+        localStorage.setItem("ROWS", JSON.stringify(accountList));
+    } else console.log("error");
+    Code.value = "";
+    Label.value = "";
+    Classe.value = "";
+});
+>>>>>>> accountSystem2
 
-},{"./lib/Selector/selectItem":"hwqLn"}],"hwqLn":[function(require,module,exports) {
+},{"./lib/Render/render":"ieEPX"}],"ieEPX":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "menu", ()=>menu
+parcelHelpers.export(exports, "addAccount", ()=>addAccount
 );
-parcelHelpers.export(exports, "getHeader", ()=>getHeader
+parcelHelpers.export(exports, "loadAccount", ()=>loadAccount
 );
-parcelHelpers.export(exports, "getMain", ()=>getMain
+parcelHelpers.export(exports, "alternate", ()=>alternate
 );
-//Menu Items
-var menuContext = document.querySelector('#menu_context');
-var h1 = menuContext.querySelectorAll('h1');
-var a = menuContext.querySelectorAll('a');
-var button = menuContext.querySelector('button');
-//Header Items
-var header = document.querySelector('header');
-//////Main Items
-var main = document.querySelector('main');
-//menage title
-var manageTitle = document.querySelector('#main_title_menage');
-//menage_form
-var manageForm = document.querySelector('#menage_form');
-//menage form inputs
-var manageFormCode = manageForm.querySelectorAll('input')[0];
-var manageFormLabel = manageForm.querySelectorAll('input')[1];
-var manageFormSelect = manageForm.querySelector('select');
-var manageFormButton = manageForm.querySelector('button');
-//menage form table
-var tableArea = document.querySelector('#table_area');
-var manageTable = tableArea.querySelector('table');
-var manageThead = tableArea.querySelector('thead');
-var manageTbody = tableArea.querySelector('tbody');
-var manageTfoot = tableArea.querySelector('tfoot');
-const menu = ()=>{
-    return {
-        menuContext,
-        h1,
-        a,
-        button
-    };
-};
-const getHeader = ()=>{
-    return {
-        header
-    };
-};
-const getMain = ()=>{
-    return {
-        main,
-        manageTitle,
-        manageFormCode,
-        manageFormLabel,
-        manageFormSelect,
-        manageFormButton,
-        tableArea,
-        manageTable,
-        manageThead,
-        manageTbody,
-        manageTfoot
-    };
-};
+function addAccount(elt, obj) {
+    const text = `<tr>
+        <td>${obj.code}</td>
+        <td colspan="2">${obj.label}</td>
+        <td>${obj.classe}</td>
+    </tr>
+    `;
+    const position = "beforeend";
+    elt.insertAdjacentHTML(position, text);
+}
+function loadAccount(elt, array) {
+    elt.textContent = "";
+    array.forEach((item)=>{
+        addAccount(elt, item);
+    });
+}
+function alternate(elt) {
+    for(var i = 0; i < elt.rows.length; i++)if (i % 2 === 0) elt.rows[i].style.backgroundColor = "silver";
+}
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"ciiiV":[function(require,module,exports) {
 exports.interopDefault = function(a) {
