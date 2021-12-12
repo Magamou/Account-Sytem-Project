@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transaction</title>
     <link rel="stylesheet" href="/index.de101254.css">
-    <script src="/transaction.ae189f7d.js" defer=""></script>
+    <script src="/transaction.3f9011b7.js" defer=""></script>
 </head>
 <body>
     <div id="container">
@@ -19,23 +19,24 @@
                 <img src="/icons8-menu-50.39659d11.png" alt="menu image">
             </button>
             <a href="/index.html">
-                <img src="https://img.icons8.com/windows/50/000000/home.png" alt="index image">
+                <img src="/icons8-accueil-50.4648bc9e.png" alt="index image">
                 <h1>Home</h1>
             </a>
             <a href="/menage.html">
-                <img src="https://img.icons8.com/external-others-phat-plus/50/000000/external-accounting-design-thinking-outline-others-phat-plus.png" alt="menage image">
+                <img src="/icons8-accounting-50.cd9dc41b.png" alt="menage image">
                 <h1>Menage Account</h1>
             </a>
 
             <a href="/edit.html">
-                <img src="https://img.icons8.com/ios-glyphs/50/000000/edit-property.png" alt="edit image">
+                <img src="/icons8-modifier-la-propriété-50.b9b0c93a.png" alt="edit image">
                 <h1>Edit Account</h1>
             </a>
 
             <a href="/transaction.html">
-                <img src="https://img.icons8.com/windows/50/000000/transaction-list.png" alt="transaction image">
+                <img src="/icons8-liste-des-transactions-50.b4e7d257.png" alt="transaction image">
                 <h1>Account Transaction</h1>
             </a>
+
             <div id="udt">
                 <h1>update delete tab</h1>
             </div>
@@ -46,17 +47,15 @@
                 <h1>Account Transaction</h1>
               </div>
                   <div id="transaction_form">
-                      <label>Transaction Date</label><input type="date" placeholder="First date">
-                      <label>Transaction Description</label><input type="text" placeholder="description of transaction">
-                      <button>Add</button><br>
+                      <label>Transaction Date</label><input type="date" placeholder="First date" id="date">
+                      <input type="text" placeholder="description of transaction" id="desc">
+                      <button id="bt">Add</button><br>
 
-                      <label>Code</label><input type="text" placeholder="Label">
-                      <label>Debit</label><input type="number" placeholder="Debit">
-                      <label>Credit</label><input type="number" placeholder="Credit"><br>
+                      <label>Code</label><input type="text" placeholder="compte à debiter" id="accountDebit"> 
+                      <label>debit</label><input type="number" placeholder="Debit" id="debit"><br>
 
-                      <label>Code</label><input type="text" placeholder="Label">
-                      <label>Debit</label><input type="number" placeholder="Debit">
-                      <label>Credit</label><input type="number" placeholder="Credit">
+                      <label>Code</label><input type="text" placeholder="compte à crediter" id="accountCredit"> 
+                      <label>credit</label><input type="number" placeholder="Credit" id="credit"><br>
                   </div>
               <div id="table_area_transaction">
                   <table cellspacing="0">
@@ -73,10 +72,11 @@
                       <tbody>
                           
                       </tbody>
-                      <tfoot>
-                          
-                      </tfoot>
                   </table>
+                </div>
+                <div id="total">
+                    <span id="totalDebit">total debit:</span>
+                    <span id="totalCredit">total credit</span>
                 </div>
         </main>
     </div>

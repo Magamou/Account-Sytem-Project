@@ -459,18 +459,158 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"1wubG":[function(require,module,exports) {
-// let row =document.querySelector('tr');
-// row.addEventListener('dbclick', function(e){
-//     row.style.backgroundColor="yellow";
-//     row.style.minWidth
-// })
-let menu = document.querySelector('#menu_context');
-let button = menu.querySelector('button');
-let tite = menu.querySelectorAll('a');
-button.addEventListener('click', function(e) {
-    for (h of tite)h.style.width = "5";
+var _render = require("./lib/Render/render");
+let Code = document.querySelector("#mCode");
+let Label = document.querySelector("#mLabel");
+let Classe = document.querySelector("#mClasse");
+let bm = document.querySelector("#bm");
+let list = document.querySelector("#table_area").querySelector("tbody");
+let accountList;
+let data = localStorage.getItem("ROWS");
+if (data) {
+    accountList = JSON.parse(data);
+    _render.loadAccount(list, accountList);
+    _render.alternate(list);
+} else accountList = [];
+bm.addEventListener("click", function(event) {
+    const _code = Code.value;
+    const _label = Label.value;
+    const _classe = Classe.value;
+    if (_code && _label && _classe) {
+        _render.addAccount(list, {
+            code: _code,
+            label: _label,
+            classe: _classe
+        });
+        accountList.push({
+            code: _code,
+            label: _label,
+            classe: _classe
+        });
+        localStorage.setItem("ROWS", JSON.stringify(accountList));
+    } else console.log("error");
+    Code.value = "";
+    Label.value = "";
+    Classe.value = "";
 });
 
-},{}]},["enqa6","1wubG"], "1wubG", "parcelRequire3fe4")
+},{"./lib/Render/render":"ieEPX"}],"ieEPX":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "addAccount", ()=>addAccount
+);
+parcelHelpers.export(exports, "loadAccount", ()=>loadAccount
+);
+parcelHelpers.export(exports, "alternate", ()=>alternate
+);
+parcelHelpers.export(exports, "addTrans", ()=>addTrans
+);
+parcelHelpers.export(exports, "loadTrans", ()=>loadTrans
+);
+var _input = require("../Control/input");
+function addAccount(elt, obj) {
+    const text = `<tr>
+        <td>${obj.code}</td>
+        <td colspan="2">${obj.label}</td>
+        <td>${obj.classe}</td>
+    </tr>
+    `;
+    const position = "beforeend";
+    elt.insertAdjacentHTML(position, text);
+    alternate(elt);
+}
+function loadAccount(elt, array) {
+    elt.textContent = "";
+    array.forEach((item)=>{
+        addAccount(elt, item);
+    });
+}
+function alternate(elt) {
+    for(var i = 0; i < elt.rows.length; i++)if (i % 2 === 0) elt.rows[i].style.backgroundColor = "silver";
+}
+function addTrans(elt, obj) {
+    const text = `<tr>
+        <td>${obj._transactionDate}</td>
+        <td>${obj._codeDebit}</td>
+        <td>${obj._codeCredit}</td>
+        <td>${obj._transactionDesc}</td>
+        <td>${obj._mtDebit}</td>
+        <td>${obj._mtCredit}</td>
+    </tr>
+    `;
+    const position = "beforeend";
+    elt.insertAdjacentHTML(position, text);
+    alternate(elt);
+}
+function loadTrans(elt, array) {
+    elt.textContent = "";
+    array.forEach((item)=>{
+        addTrans(elt, item);
+    });
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","../Control/input":"lFXyL"}],"ciiiV":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"lFXyL":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "total", ()=>total
+);
+parcelHelpers.export(exports, "storeTotal", ()=>storeTotal
+);
+parcelHelpers.export(exports, "searchAccount", ()=>searchAccount
+);
+function total() {
+    let s1 = localStorage.getItem("totalDebit");
+    let s2 = localStorage.getItem("totalCredit");
+    if (s1 && s2) {
+        document.querySelector("#totalDebit").textContent = `Total Debit: ${s1}`;
+        document.querySelector("#totalCredit").textContent = `Total Credit: ${s2}`;
+    }
+}
+function storeTotal(v1, v2) {
+    v1 += Number(localStorage.getItem("totalCredit"));
+    v2 += Number(localStorage.getItem("totalDebit"));
+    localStorage.setItem("totalCredit", v1);
+    localStorage.setItem("totalDebit", v2);
+}
+function searchAccount(account) {
+    let ac = JSON.parse(localStorage.getItem("ROWS"));
+    let corresponding = 0;
+    if (ac) ac.map((x)=>{
+        if (x.code === account) corresponding = 1;
+    });
+    return corresponding;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["enqa6","1wubG"], "1wubG", "parcelRequire3fe4")
 
 //# sourceMappingURL=edit.ae189f7d.js.map
